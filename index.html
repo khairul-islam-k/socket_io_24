@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>khairul</h3>
+    <ul id="khairul"></ul>
+    <input type="text" id="name">
+    <button onclick="send()">Send</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        let socket = io();
+        const send = () => {
+            const name = document.getElementById("name").value;
+            socket.emit("chat",name);
+            document.getElementById("name").value ="";
+        }
+        
+        socket.on("chat_transfer",(data) => {
+            const text = document.getElementById("khairul");
+            const li = document.createElement("li");
+            li.innerText = data;
+            text.appendChild(li);
+        })
+        
+    </script>
+</body>
+</html>

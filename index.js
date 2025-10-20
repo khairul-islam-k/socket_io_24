@@ -19,7 +19,7 @@ io.on("connection",(socket) => {
 
 app.get("/",(req, res) => {
     // res.sendFile(__dirname + "/index.html");
-    res.send("socket.io server");
+    res.send("socket.io server hello world");
 })
 
 expressServer.listen(port, () => {
